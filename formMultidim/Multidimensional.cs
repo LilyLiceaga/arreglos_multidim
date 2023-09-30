@@ -5,10 +5,12 @@ using System.Runtime.Remoting.Messaging;
 
 namespace formMultidim
 {
-    internal class Multidimensional:Matriz
+    internal class Multidimensional : Matriz
     //internal class Multidimensional:Matriz HERENCIA despues del nombre la clase Multidemsional ponemos 2 puntos y la matriz de la va a heredar rasgos
     {
         float[,] A;
+
+
         //constructor
         public Multidimensional(int M,int N)
         {
@@ -57,25 +59,71 @@ namespace formMultidim
             {
                 for (int j = 0; j < m1.N; j++)
                 {
-                    m3.A[i,j]= m1.A[i, j] + m2.A[i,j];
+                    m3.A[i,j] = m1.A[i, j] + m2.A[i,j];
                 }
             }
             return m3;
         }
-
-        public static Multidimensional operator *(Multidimensional m1, Multidimensional m2)
+        public static Multidimensional operator -(Multidimensional m1, Multidimensional m2)
         {
             Multidimensional m3 = new Multidimensional(m1.M, m1.N);
             for (int i = 0; i < m1.M; i++)
             {
                 for (int j = 0; j < m1.N; j++)
                 {
-                    m3.A[i, j] = m1.A[i, j] + m2.A[i, j];
+                    m3.A[i, j] = m1.A[i, j] - m2.A[i, j];
                 }
             }
             return m3;
         }
+        public static Multidimensional operator *(Multidimensional m1, Multidimensional m2)
+        {
+            Multidimensional m3 = new Multidimensional(m1.M, m1.N);
+            if (m1.N == m2.M)
+            {
+                for (int i = 0; i < m1.M; i++) 
+                {
+                    for (int j = 0; j < m2.N; j++)
+                    {
+                        m3.A[i, j] = 0;
 
+                        for (int k = 0; k < m1.N; k++)
+                        {
+                            m3.A[i, j] += m1.A[i, k] * m2.A[k, j];
+                        }
+                    }
+                }
+            }
+            return m3;
+        }
+        public static Multidimensional operator &(Multidimensional m1, Multidimensional m2) //seno operador deg
+        {
+            Multidimensional m3 = new Multidimensional(m1.M, m1.N);
+
+            for (int i = 0; i < m1.M; i++)
+            {
+                for (int j = 0; j < m1.N; j++)
+                {
+                    m3.A[i, j] = (float)Math.Round(Math.Sin((m1.A[i, j] * Math.PI / 180)), 5);
+                }
+            }
+
+            return m3;
+        }
+        public static Multidimensional operator %(Multidimensional m1, Multidimensional m2) //seno operador rad
+        {
+            Multidimensional m3 = new Multidimensional(m1.M, m1.N);
+
+            for (int i = 0; i < m1.M; i++)
+            {
+                for (int j = 0; j < m1.N; j++)
+                {
+                    m3.A[i, j] = (float)Math.Round(Math.Sin(m1.A[i, j]),5); 
+                }
+            }
+
+            return m3 ;
+        }
 
         public override string ToString()
         {

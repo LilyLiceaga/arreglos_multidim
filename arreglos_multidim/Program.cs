@@ -8,7 +8,7 @@ namespace arreglos_multidim
         static void Main(string[] args)
         {
             char[,,] nombredelarreglo = { { { 'a', 'b' }, { 'c', 'd' }},{{ 'e', 'f' }, { 'g', 'h' }}};
-            Console.WriteLine(nombredelarreglo[1,1,0]);// imprime la g, aqui lo debemos de ver como si fuera un cubo la primera matriz seria
+            Console.WriteLine(nombredelarreglo[1,1,0]); // imprime la g, aqui lo debemos de ver como si fuera un cubo la primera matriz seria
             /*
              la primera parte como la capa 0 seria:
              a b

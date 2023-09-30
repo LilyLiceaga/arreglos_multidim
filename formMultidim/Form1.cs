@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-// para agregar  la la cosa de toolbox en serch y buscamos esa madre
 namespace formMultidim
 {
     public partial class Form1 : Form
@@ -17,17 +9,18 @@ namespace formMultidim
         private Multidimensional m1;
         private Multidimensional m2;
         private Multidimensional m3;
+        
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnIntro_Click(object sender, EventArgs e)
         {
             if (intro)
             {
-                m1= Multidimensional.Leer(textBox1.Text);
-                lbmatriz1.Text=m1.ToString();
+                m1 = Multidimensional.Leer(textBox1.Text);
+                lbmatriz1.Text = m1.ToString();
                 intro = false;
             }
             else
@@ -39,7 +32,6 @@ namespace formMultidim
             textBox1.Clear();
         }
 
-        
 
         private void btnSuma_Click(object sender, EventArgs e)
         {
@@ -49,11 +41,55 @@ namespace formMultidim
             }
             m3 = m1 + m2;
             txtbresultado.Text = m3.ToString();
+
         }
 
         private void btnResta_Click(object sender, EventArgs e)
         {
+            m3 = m1 - m2;
+            txtbresultado.Text = m3.ToString();
+        }
 
+        private void btnMultiplicacion_Click(object sender, EventArgs e)
+        {
+            
+            m3 = m1 * m2;
+            txtbresultado.Text = m3.ToString();
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
+
+        private void btnSeno_Click(object sender, EventArgs e)
+        {
+            
+
+            if (radioButton1.Checked) //radians
+            {
+                MessageBox.Show("Rad Seleccionado"); //%
+                m3 = m1 % m2;
+                txtbresultado.Text = m3.ToString();
+
+            }
+            else
+            {
+                if (radioButton2.Checked) //degrees
+                {
+                    MessageBox.Show("Deg Seleccionado"); //&
+                    m3 = m3 & m2; ;
+
+                    txtbresultado.Text = m3.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar Rad o Deg");
+                }
+            }
+            
         }
     }
 }
+

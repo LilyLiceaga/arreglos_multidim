@@ -35,10 +35,11 @@ namespace formMultidim
 
         private void btnSuma_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            /*if (radioButton1.Checked)
             {
                 MessageBox.Show("Deg Seleccionado");
-            }
+            }*/
+
             m3 = m1 + m2;
             txtbresultado.Text = m3.ToString();
 

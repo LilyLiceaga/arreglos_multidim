@@ -67,7 +67,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(592, 27);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "   Introduce los valores de tu matriz";
+            this.textBox1.Text = "   Introduce los valores de tu matriz cuadrada";
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // label1
